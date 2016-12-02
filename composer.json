@@ -1,0 +1,19 @@
+{
+    "name": "sanyc/wxpay",
+    "description": "微信支付",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "sanyc",
+            "email": "9714928@qq.com"
+        }
+    ],
+    "require": {
+        "php":">=5.4"
+    },
+    "autoload":{
+        "psr-4": {
+            "Sanyc\\WxPay\\": "src/"
+        }
+    }
+}
