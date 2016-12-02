@@ -1,7 +1,6 @@
 <?php
 namespace Sanyc\WxPay\sdk;
 
-use Sanyc\WxPay\sdk\WxPayApi;
 /**
  * 
  * 刷卡支付实现类
