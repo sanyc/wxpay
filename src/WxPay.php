@@ -14,7 +14,8 @@ use Sanyc\WxPay\sdk\NativePay;
  */
 class WxPay 
 {
-	public function __construct(array $payment_info = [])
+    private $url = '';
+    public function __construct(array $payment_info = [])
     {
         $notify = new NativePay();
         $input = new WxPayUnifiedOrder();
@@ -30,6 +31,10 @@ class WxPay
         $input->SetProduct_id($payment_info['product_id']);
         //$input->SetOut_trade_no("sjz01234567892");
         $result = $notify->GetPayUrl($input);
-        return $result['code_url'];
+        $this->url = $result['code_url'];
+    }
+    public function getPayment()
+    {
+        return $this->url;
     }
 }
