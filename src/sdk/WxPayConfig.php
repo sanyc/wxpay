@@ -61,7 +61,7 @@ class WxPayConfig
 
 	public static function getConfig($field = '')
 	{
-		$configs = config('pay.wxpay') ? config('pay.wxpay') : [];
+		$configs = config('pay.WxPay') ? config('pay.WxPay') : [];
 		$r = new \ReflectionClass(new static);
 		$configs = array_merge($r->getConstants(), $configs);
 		if ($field) {
