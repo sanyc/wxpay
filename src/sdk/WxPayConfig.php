@@ -58,4 +58,15 @@ class WxPayConfig
 	 * @var int
 	 */
 	const REPORT_LEVENL = 1;
+
+	public static function getConfig($field = '')
+	{
+		$configs = config('pay.wxpay') ? config('pay.wxpay') : [];
+		$r = new \ReflectionClass(new static);
+		$configs = array_merge($r->getConstants(), $configs);
+		if ($field) {
+			return isset($configs[$field]) ? $configs[$field] : '';
+		}
+		return $configs;
+	}
 }
