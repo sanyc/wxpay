@@ -43,7 +43,7 @@ class WxPayApi
 		
 		//异步通知url未设置，则使用配置文件中的url
 		if(!$inputObj->IsNotify_urlSet()){
-			$inputObj->SetNotify_url(WxPayConfig::NOTIFY_URL);//异步通知url
+			$inputObj->SetNotify_url(WxPayConfig::getConfig('NOTIFY_URL'));//异步通知url
 		}
 		
 		$inputObj->SetAppid(WxPayConfig::getConfig('APPID'));//公众账号ID
