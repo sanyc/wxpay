@@ -22,14 +22,13 @@ class WxPayNotify extends WxPayNotifyReply
 		if($result == false){
 			$this->SetReturn_code("FAIL");
 			$this->SetReturn_msg($msg);
-			$this->ReplyNotify(false);
-			return;
+			return $this->ReplyNotify(false);
 		} else {
 			//该分支在成功回调到NotifyCallBack方法，处理完成之后流程
 			$this->SetReturn_code("SUCCESS");
 			$this->SetReturn_msg("OK");
 		}
-		$this->ReplyNotify($needSign);
+		return $this->ReplyNotify($needSign);
 	}
 	
 	/**
@@ -82,6 +81,6 @@ class WxPayNotify extends WxPayNotifyReply
 		{
 			$this->SetSign();
 		}
-		WxPayApi::replyNotify($this->ToXml());
+		return $this->values;
 	}
 }
