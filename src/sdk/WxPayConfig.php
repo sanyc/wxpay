@@ -64,6 +64,13 @@ class WxPayConfig
 	public static function getConfig($field = '')
 	{
 		//$configs = config('pay.WxPay') ? config('pay.WxPay') : [];
+		if (empty(self::$configs)) {
+			if ($sys_configs = model('Settings')->getSettings('pay', 'WxPay')) {
+	    		self::setConfig(array_merge(config('pay.WxPay'), $sys_configs));
+	    	}else{
+	    		self::setConfig(config('pay.WxPay'));
+	    	}
+		}
 		$r = new \ReflectionClass(new static);
 		$configs = array_merge($r->getConstants(), self::$configs);
 		if ($field) {
